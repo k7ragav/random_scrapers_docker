@@ -26,6 +26,6 @@ def extract_table_data(soup) -> Any:
 
 soup = get_json_response()
 status = soup['products'][0]['cdSellingStatus']
-if status == 'SOLD_OUT':
+if status != 'SOLD_OUT':
         messaage = 'Still sold out... :('
         send_message(messaage)
