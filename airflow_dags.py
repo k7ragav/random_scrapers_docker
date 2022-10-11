@@ -34,3 +34,15 @@ with DAG(
         task_id="women_volleyball",
         bash_command=bash_command,
     )
+
+with DAG(
+        "ibood_nl",
+        description="ibood hourly",
+        default_args=default_args,
+        schedule_interval=intervals["every_hour"],
+        start_date=datetime(2022, 10, 10, tzinfo=timezone("Europe/Amsterdam")),
+) as ibood_nl_dag:
+    ibood_nl_task = BashOperator(
+        task_id="ibood_nl",
+        bash_command=bash_command,
+    )
